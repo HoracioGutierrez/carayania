@@ -1,6 +1,8 @@
 import './globals.css';
 import { Inter } from 'next/font/google';
 import type { Metadata } from 'next';
+import { cn } from '@/lib/utils';
+import LayoutFooter from '@/components/LayoutFooter';
 import LayoutHeader from '@/components/LayoutHeader';
 import { ThemeProvider } from '@/components/ThemeProvider';
 
@@ -18,8 +20,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
+    <html lang="en" className='h-full'>
+      <body className={cn(inter.className,"flex flex-col h-full")}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -28,6 +30,7 @@ export default function RootLayout({
         >
           <LayoutHeader/>
           {children}
+          <LayoutFooter/>
         </ThemeProvider>
       </body>
     </html>

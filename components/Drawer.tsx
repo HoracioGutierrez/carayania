@@ -19,8 +19,8 @@ interface DrawerProps {
 
 export default function Drawer({ session }: DrawerProps) {
     return (
-        <Sheet>
-            <SheetTrigger>
+        <Sheet >
+            <SheetTrigger asChild>
                 <Button className="flex justify-end p-4 md:hidden">
                     <MenuIcon />
                 </Button>

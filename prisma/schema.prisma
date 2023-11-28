@@ -43,7 +43,7 @@ model User {
   accounts      Account[]
   sessions      Session[]
   chats         ChatsOnUser[]
-  Message       Message[]
+  message       Message[]
   currentPlan   Plan?         @relation(fields: [planId], references: [id])
   planId        String?       @db.ObjectId
 }
@@ -63,7 +63,7 @@ model Chat {
   deleted      Boolean       @default(false)
   participants String[]
   author       ChatsOnUser[]
-  Message      Message[]
+  message      Message[]
 }
 
 model Message {

@@ -26,6 +26,7 @@ export const { handlers: { GET, POST }, auth } = NextAuth({
                 include: {
                     currentPlan: true,
                     chats: true,
+                    message: true,
                 }
             })
 
