@@ -1,4 +1,6 @@
 import { auth } from '@/auth';
+import PrivateHome from '@/components/PrivateHome';
+import PublicHome from '@/components/PublicHome';
 
 
 export default async function Home() {
@@ -6,10 +8,8 @@ export default async function Home() {
   const session = await auth()
 
   return (
-    <main className='p-2 md:p-4 grow'>
-      <div className="container">
-        {session ? "You are logged in" : "You are not logged in"}
-      </div>
-    </main>
+    <>
+      {session ? <PrivateHome /> : <PublicHome />}
+    </>
   )
 }
