@@ -19,7 +19,7 @@ export const { handlers: { GET, POST }, auth } = NextAuth({
     callbacks: {
         async session({ session, user }) {
 
-            const test = await prisma.user.findFirst({
+            const userFromDB = await prisma.user.findFirst({
                 where: {
                     email: session.user.email
                 },
@@ -30,8 +30,22 @@ export const { handlers: { GET, POST }, auth } = NextAuth({
                 }
             })
 
-            console.log(test)
+            prisma.$disconnect()
 
+            if(userFromDB) {
+                session.user = {
+                    name: userFromDB.name,
+                    email: userFromDB.email,
+                    image: userFromDB.image,
+                    id: userFromDB.id,
+                    planId: userFromDB.planId,
+                    chatId : null,
+                    plansIds : null,
+                    currentPlan : null,
+                    chats: userFromDB.chats,
+                    message: userFromDB.message
+                }
+            }
             return session
         }
     }

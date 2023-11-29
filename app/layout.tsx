@@ -1,6 +1,7 @@
 import './globals.css';
 import { Inter } from 'next/font/google';
 import type { Metadata } from 'next';
+import { Toaster } from 'sonner';
 import { cn } from '@/lib/utils';
 import LayoutFooter from '@/components/LayoutFooter';
 import LayoutHeader from '@/components/LayoutHeader';
@@ -31,6 +32,7 @@ export default function RootLayout({
           <LayoutHeader/>
           {children}
           <LayoutFooter/>
+          <Toaster position='top-right'/>
         </ThemeProvider>
       </body>
     </html>

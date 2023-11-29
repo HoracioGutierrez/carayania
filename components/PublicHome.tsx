@@ -1,4 +1,4 @@
-import { Button } from './ui/button';
+import SignInButton from './SignInButton';
 
 
 export default function PublicHome() {
@@ -15,7 +15,7 @@ export default function PublicHome() {
                     </header>
                     <div className='flex flex-col gap-4'>
                         <p className="text-slate-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio ipsum neque, repudiandae sapiente iure ducimus provident numquam, molestias, adipisci corrupti et eos! Blanditiis deserunt, saepe iure eius at perferendis delectus sat perferendis delectus sat perferendis delectus.</p>
-                        <Button className='sm:self-center md:self-stretch lg:self-end'>comenzar a chatear!</Button>
+                        <SignInButton className='sm:self-center md:self-stretch lg:self-end'>comenzar a chatear!</SignInButton>
                     </div>
                 </section>
             </div>
