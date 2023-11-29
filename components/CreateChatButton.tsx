@@ -20,12 +20,14 @@ type Props = {
 
 export default function CreateChatButton({ children = "crear chat", className, disabled , userId }: Props) {
 
-    console.log(userId)
-
     const handleClick = async () => {
         if (disabled) toast.error("No tienes mas creditos!")
+        toast.loading("Creando chat...")
+        const { error } = await createNewChatForUser(userId)
 
-        await createNewChatForUser(userId)
+        if (error) toast.error("Error al crear el chat")
+
+        toast.success("Chat creado!")
     }
 
     return (

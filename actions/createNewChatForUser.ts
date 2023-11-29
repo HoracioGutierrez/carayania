@@ -1,6 +1,7 @@
 "use server"
 
 import randomstring from 'randomstring';
+import { revalidatePath } from 'next/cache';
 import { PrismaClient } from '@prisma/client';
 
 
@@ -11,52 +12,59 @@ const returnType = {
     payload: null
 }
 
-export const createNewChatForUser = async (userId: string) => {
+export const createNewChatForUser = async (userId: string): Promise<{ error: boolean, errorMessage: string, message: string, payload: any }> => {
 
     try {
         const client = new PrismaClient()
-        
+
         const randomSlug = randomstring.generate(7);
 
         const check = await client.chat.findFirst({
-            where : {
-                author : {
-                    id : userId
+            where: {
+                author: {
+                    id: userId
                 },
-                slug : randomSlug
+                slug: randomSlug
             }
         })
 
 
-        if(!check) {
-
-            console.log("chat doesn't exist")
+        if (!check) {
 
             const res = await client.chat.create({
-                data : {
-                    slug : randomSlug,
-                    author : {
-                        connect : {
-                            id : userId
+                data: {
+                    slug: randomSlug,
+                    author: {
+                        connect: {
+                            id: userId
                         }
                     }
                 },
-                include : {
-                    author : true
+                include: {
+                    author: true
                 }
             })
 
-            if(res) {
-                console.log("chat created")
+            if (res) {
+
+                client.$disconnect()
+                revalidatePath("/")
+                return {
+                    ...returnType,
+                    payload: res
+                }
+
             } else {
-                console.log("chat not created")
+                return {
+                    ...returnType,
+                    error: true,
+                    errorMessage: "Something went wrong"
+                }
             }
 
         } else {
-            console.log("test")
+            return createNewChatForUser(userId)
         }
-
-        client.$disconnect()
 
 
     } catch (error) {
@@ -64,7 +72,7 @@ export const createNewChatForUser = async (userId: string) => {
         return {
             ...returnType,
             error: true,
-            errorMessage: error
+            errorMessage: "Something went wrong"
         }
     }
 }
