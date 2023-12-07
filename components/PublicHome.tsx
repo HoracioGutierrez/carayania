@@ -3,7 +3,7 @@ import SignInButton from './SignInButton';
 
 export default function PublicHome() {
     return (
-        <main className='p-2 md:p-4 grow'>
+        <main className='p-2 pt-[96px] md:p-4 grow flex justify-center items-center'>
             <div className="container h-full grid grid-cols-1 grid-rows-[minmax(min-content,_300px)_1fr] md:grid-rows-1 md:grid-cols-2 gap-8">
                 <section className="home__image md:self-center max-h-96 h-full lg:max-h-[550px]">
                     <img src="https://picsum.photos/seed/picsum/800/600" alt="" className=" h-full w-full object-cover" />

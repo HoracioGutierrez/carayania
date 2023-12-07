@@ -3,7 +3,6 @@ import { Inter } from 'next/font/google';
 import type { Metadata } from 'next';
 import { Toaster } from 'sonner';
 import { cn } from '@/lib/utils';
-import LayoutFooter from '@/components/LayoutFooter';
 import LayoutHeader from '@/components/LayoutHeader';
 import { ThemeProvider } from '@/components/ThemeProvider';
 
@@ -20,9 +19,10 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+
   return (
-    <html lang="en" className='h-full'>
-      <body className={cn(inter.className,"flex flex-col h-full")}>
+    <html lang="en" className='min-h-screen'>
+      <body className={cn(inter.className,"flex flex-col min-h-[inherit] h-full bg-gradient-to-br dark:from-slate-950 dark:to-slate-800")}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -31,7 +31,6 @@ export default function RootLayout({
         >
           <LayoutHeader/>
           {children}
-          <LayoutFooter/>
           <Toaster position='top-right'/>
         </ThemeProvider>
       </body>

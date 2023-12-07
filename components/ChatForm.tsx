@@ -15,7 +15,7 @@ export default function ChatForm({ children, chatSlug }: Props) {
     const onSubmit = (e: any) => {
         e.preventDefault()
         const input = e.target["chat-textarea"].value
-        append({ content: input, role: 'user', id: chatSlug })
+        append({ content: input, role: 'user', id: chatSlug },{data : { id : chatSlug }})
     }
 
     return (

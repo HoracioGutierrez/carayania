@@ -25,7 +25,7 @@ export async function POST(req: Request) {
 
     const chatExists = await client.chat.findFirst({
         where: {
-            slug: json.messages[0].id
+            slug: json.data.id
         }
     })
 
@@ -72,9 +72,10 @@ export async function POST(req: Request) {
 
     const stream = OpenAIStream(res, {
         async onCompletion(completion) {
+
             const chatExists = await client.chat.findFirst({
                 where: {
-                    slug: json.messages[0].id
+                    slug: json.data.id
                 }
             })
 
@@ -82,7 +83,6 @@ export async function POST(req: Request) {
                 throw new Error('Chat not found')
             }
 
-            //
             const newMessage = await client.chat.update({
                 where: {
                     id: chatExists.id
@@ -120,6 +120,9 @@ export async function POST(req: Request) {
             })
 
             // Check if plan is expired based on maxQuantity and currentQuantity
+
+            console.log(newMessage.author.currentPlan)
+
             if(Number(newMessage.author.currentPlan?.maxQuantity) <= Number(newMessage.author.currentPlan?.currentQuantity)) {
                 await client.plan.update({
                     data : {

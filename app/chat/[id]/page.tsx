@@ -19,12 +19,12 @@ export default async function page({ params: { id: slug } }: Props) {
     
 
     return (
-        <main className='h-full flex-col'>
-            <ScrollArea className='h-[calc(100%_-_180px)] container py-4'>
+        <main className='p-2 pt-[96px] md:p-4 grow max-h-screen flex flex-col'>
+            <ScrollArea className='h-screen container py-4'>
                 <ChatMessagesList chatSlug={slug} payload={payload}/>
             </ScrollArea>
             <ChatForm chatSlug={slug}>
-                <div className="mb-4 w-full bg-slate-200 dark:bg-slate-900">
+                <div className="mb-4 w-full ">
                     <div className="rounded-lg rounded-b-none border border-slate-300 bg-slate-50 px-2 py-2 dark:border-slate-700 dark:bg-slate-800">
                         <label htmlFor="prompt-input" className="sr-only">Enter your prompt</label>
                         <ChatTextarea chatSlug={slug} />

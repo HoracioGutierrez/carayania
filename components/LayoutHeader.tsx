@@ -3,6 +3,7 @@ import { auth } from '@/auth';
 import Drawer from './Drawer';
 import SignInButton from './SignInButton';
 import SignOutButton from './SignOutButton';
+import { ThemeTogglerButton } from './ThemeTogglerButton';
 
 
 export default async function LayoutHeader() {
@@ -10,7 +11,7 @@ export default async function LayoutHeader() {
     const session = await auth()
 
     return (
-        <header className="p-4 dark:dark:bg-gray-800 dark:dark:text-gray-100">
+        <header className="p-4 bg-slate-200 shadow-md dark:shadow-none dark:bg-transparent fixed w-full z-10">
             <div className="container px-2 flex justify-between h-16 mx-auto">
                 <Link rel="noopener noreferrer" href="/" aria-label="Back to homepage" className="flex items-center p-2">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 32 32" className="w-8 h-8 dark:dark:text-violet-400">
@@ -19,7 +20,8 @@ export default async function LayoutHeader() {
                     </svg>
                 </Link>
                 <div className="items-center space-x-3 flex">
-                    <nav className='hidden md:flex'>
+                    <nav className='hidden md:flex gap-2'>
+                        <ThemeTogglerButton/>
                         {session ? <SignOutButton /> : <SignInButton />}
                     </nav>
                     <Drawer session={session}/>

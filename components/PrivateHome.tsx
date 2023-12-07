@@ -13,8 +13,10 @@ export default async function PrivateHome() {
     const session = await auth()
 
 
+    console.log(session?.user.currentPlan)
+
     return (
-        <main className='p-2 md:p-4 grow'>
+        <main className='p-2 md:p-4 grow '>
             <div className="container px-2">
                 <header className='border-b pb-2 flex items-center gap-4 xs:gap-8'>
                     <div className='relative w-[40px] h-[40px] xs:w-[60px] xs:h-[60px] '>
@@ -23,20 +25,22 @@ export default async function PrivateHome() {
                     <SectionTitle className='pb-0 border-b-0'>{session?.user.name}</SectionTitle>
                 </header>
                 <section className='@container'>
-                    <CreateChatButton userId={session?.user.id as string} />
-                    <h2 className='text-xl font-bold mt-4'>Chats</h2>
+                    <header className='flex items-center py-4 gap-2'>
+                        <h2 className='text-xl font-bold'>Chats</h2>
+                        <CreateChatButton disabled={session?.user.currentPlan?.expired as boolean} userId={session?.user.id as string} rounded />
+                    </header>
                     <div className='grid gap-4 @md:grid-cols-2 @xl:grid-cols-3 @3xl:grid-cols-4'>
                         {session?.user.chats.length && session?.user.chats.length > 0 ? (
                             <>
                                 {session?.user.chats.map((chat: any) => {
                                     return (
-                                        <article key={chat.id} className='flex flex-wrap items-center gap-4 xs:gap-4 mt-4 p-2 shadow-md rounded-sm hover:scale-105 transition-transform duration-300'>
+                                        <article key={chat.id} className='flex flex-wrap items-center gap-4 xs:gap-4 mt-4 p-2 shadow-md rounded-sm hover:scale-105 transition-transform duration-300 bg-secondary dark:bg-secondary'>
                                             <div className='grid place-content-center w-[40px] h-[40px] xs:w-[60px] xs:h-[60px] '>
                                                 <MessageSquareIcon />
                                             </div>
                                             <div className='flex-1'>
                                                 <h3 className='font-bold'>{chat.slug}</h3>
-                                                <p className='text-xs text-gray-400'>{chat.lastMessage || "Aun no hay mensajes en este chat"}</p>
+                                                <p className='text-xs text-gray-400 max-h-20 overflow-hidden text-clip'>{chat.lastMessage || "Aun no hay mensajes en este chat "}</p>
                                             </div>
                                             <div className='flex gap-2 justify-end grow'>
                                                 <DeleteChatButton chatId={chat.id} />

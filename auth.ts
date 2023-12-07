@@ -41,7 +41,7 @@ export const { handlers: { GET, POST }, auth } = NextAuth({
                     planId: userFromDB.planId,
                     chatId : null,
                     plansIds : null,
-                    currentPlan : null,
+                    currentPlan : userFromDB.currentPlan,
                     chats: userFromDB.chats,
                     message: userFromDB.message
                 }
