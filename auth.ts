@@ -10,7 +10,10 @@ const prisma = new PrismaClient()
 export const { handlers: { GET, POST }, auth } = NextAuth({
     adapter: PrismaAdapter(prisma),
     session: { strategy: "jwt" },
-    ...authConfig,
+    /* ...authConfig, */
+    providers : [
+        ...authConfig.providers
+    ],
     events: {
         async createUser({ user }) {
             await createPlanForNewUser(user.id)
@@ -47,6 +50,11 @@ export const { handlers: { GET, POST }, auth } = NextAuth({
                 }
             }
             return session
-        }
+        }/* ,
+        async authorized({request,auth}){
+            console.log({request})
+            console.log({auth})
+            return auth ? true : false
+        } */
     }
 })

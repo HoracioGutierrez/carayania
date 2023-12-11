@@ -12,11 +12,8 @@ export default async function PrivateHome() {
 
     const session = await auth()
 
-
-    console.log(session?.user.currentPlan)
-
     return (
-        <main className='p-2 md:p-4 grow '>
+        <main className='p-2 pt-[96px] grow '>
             <div className="container px-2">
                 <header className='border-b pb-2 flex items-center gap-4 xs:gap-8'>
                     <div className='relative w-[40px] h-[40px] xs:w-[60px] xs:h-[60px] '>

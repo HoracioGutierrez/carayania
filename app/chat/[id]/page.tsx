@@ -19,7 +19,7 @@ export default async function page({ params: { id: slug } }: Props) {
     
 
     return (
-        <main className='p-2 pt-[96px] md:p-4 grow max-h-screen flex flex-col'>
+        <main className='p-2 pt-[96px] grow max-h-screen flex flex-col'>
             <ScrollArea className='h-screen container py-4'>
                 <ChatMessagesList chatSlug={slug} payload={payload}/>
             </ScrollArea>

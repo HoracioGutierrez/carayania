@@ -119,10 +119,6 @@ export async function POST(req: Request) {
                 }
             })
 
-            // Check if plan is expired based on maxQuantity and currentQuantity
-
-            console.log(newMessage.author.currentPlan)
-
             if(Number(newMessage.author.currentPlan?.maxQuantity) <= Number(newMessage.author.currentPlan?.currentQuantity)) {
                 await client.plan.update({
                     data : {
