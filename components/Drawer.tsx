@@ -11,6 +11,7 @@ import {
 } from './ui/sheet';
 import SignInButton from './SignInButton';
 import SignOutButton from './SignOutButton';
+import { ThemeTogglerButton } from './ThemeTogglerButton';
 
 
 interface DrawerProps {
@@ -29,7 +30,8 @@ export default function Drawer({ session }: DrawerProps) {
                 <SheetHeader>
                     <SheetTitle>Navegacion</SheetTitle>
                 </SheetHeader>
-                <nav className="flex flex-col space-y-4">
+                <nav className="flex flex-col gap-4">
+                    <ThemeTogglerButton/>
                     {session ? <SignOutButton /> : <SignInButton />}
                 </nav>
             </SheetContent>

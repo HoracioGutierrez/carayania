@@ -17,6 +17,7 @@ declare module "next-auth" {
                 price : number | null
                 currentQuantity : number | null
                 maxQuantity : number | null
+                expired : boolean | null
             } | null,
             chats : {
                 id : string | null
