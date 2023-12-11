@@ -15,11 +15,14 @@ const config = {
 
             if(request.url === "http://localhost:3000/") return true
 
+            if(request.url.includes("/share/")) return true
+
             if(request.url.includes("/chat/")){
                 if(!auth) {
                     return NextResponse.redirect("http://localhost:3000/")
                 }
             }
+
             return auth ? true : false
         }
     }
