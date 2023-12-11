@@ -21,8 +21,8 @@ export default function ShareChatButton({ slug }: Props) {
     }
 
     return (
-        <Button onClick={handleClick} asChild size={"icon"} variant={"outline"}>
-            <Share2Icon/>
+        <Button onClick={handleClick} size={"icon"} variant={"ghost"}>
+            <Share2Icon width={24} height={24}/>
         </Button>
     )
 }

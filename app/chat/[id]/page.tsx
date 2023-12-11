@@ -1,4 +1,5 @@
 import { Share2Icon } from 'lucide-react';
+import { auth } from '@/auth';
 import ChatForm from '@/components/ChatForm';
 import ChatMessagesList from '@/components/ChatMessagesList';
 import ChatTextarea from '@/components/ChatTextarea';
@@ -15,13 +16,14 @@ interface Props {
 
 export default async function page({ params: { id: slug } }: Props) {
 
+    const session = await auth()
     const { payload } = await getMessagesFromUserChat(slug)
     
 
     return (
         <main className='p-2 pt-[96px] grow max-h-screen flex flex-col'>
             <ScrollArea className='h-screen container py-4'>
-                <ChatMessagesList chatSlug={slug} payload={payload}/>
+                <ChatMessagesList chatSlug={slug} payload={payload} userImageURL={session?.user.image as string}/>
             </ScrollArea>
             <ChatForm chatSlug={slug}>
                 <div className="mb-4 w-full ">

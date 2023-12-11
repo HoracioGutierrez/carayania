@@ -17,9 +17,9 @@ export default async function PrivateHome() {
         <main className='p-2 pt-[96px] grow '>
             <div className="container px-2">
                 <header className='border-b pb-2 gap-4 xs:gap-8 flex flex-col md:flex-row md:justify-between md:items-center  '>
-                    <div>
+                    <div className='flex items-center gap-4'>
                         <div className='relative w-[40px] h-[40px] xs:w-[60px] xs:h-[60px] '>
-                            <Image src={session?.user.image as string} alt="Profile Avatar" fill />
+                            <Image src={session?.user.image as string} alt="Profile Avatar" fill  className='rounded-full'/>
                         </div>
                         <SectionTitle className='pb-0 border-b-0'>{session?.user.name}</SectionTitle>
                     </div>
@@ -39,7 +39,7 @@ export default async function PrivateHome() {
                             <>
                                 {session?.user.chats.map((chat: any) => {
                                     return (
-                                        <article key={chat.id} className='flex flex-wrap items-center gap-4 xs:gap-4 mt-4 p-2 shadow-md rounded-sm hover:scale-105 transition-transform duration-300 bg-secondary dark:bg-secondary'>
+                                        <article key={chat.id} className='flex flex-wrap items-center gap-4 xs:gap-4 mt-4 p-2 shadow-md rounded-sm hover:scale-105 transition-transform duration-300 bg-secondary dark:bg-secondary content-between'>
                                             <div className='grid place-content-center w-[40px] h-[40px] xs:w-[60px] xs:h-[60px] '>
                                                 <MessageSquareIcon />
                                             </div>
@@ -50,7 +50,7 @@ export default async function PrivateHome() {
                                             <div className='flex gap-2 justify-end grow'>
                                                 <DeleteChatButton chatId={chat.id} />
                                                 <ShareChatButton slug={chat.slug} />
-                                                <Button asChild size={"icon"} variant={"outline"}>
+                                                <Button asChild size={"icon"} variant={"ghost"}>
                                                     <Link href={`/chat/${chat.slug}`}>
                                                         <EyeIcon className='cursor-pointer' />
                                                     </Link>

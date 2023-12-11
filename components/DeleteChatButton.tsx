@@ -25,8 +25,8 @@ export default function DeleteChatButton({ children, className, disabled, chatId
     }
 
     return (
-        <Button size={'icon'} variant={"destructive"} className={cn(className, disabled && "bg-slate-500 hover:bg-slate-500")} onClick={handleClick}>
-            <TrashIcon/>
+        <Button size={'icon'} variant={"ghost"} className={cn(className, disabled && "bg-slate-500 hover:bg-slate-500")} onClick={handleClick}>
+            <TrashIcon className='stroke-red-500'/>
         </Button>
     )
 }
