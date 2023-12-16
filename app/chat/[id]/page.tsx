@@ -26,9 +26,9 @@ export default async function page({ params: { id: slug } }: Props) {
             </ScrollArea>
             <ChatForm chatSlug={slug} expired={session?.user.currentPlan?.expired as boolean}>
                 <div className="mb-4 w-full relative">
-                    <div className={cn("rounded-lg rounded-b-none border border-slate-300 bg-slate-50 px-2 py-2 dark:border-slate-700 dark:bg-slate-800",session?.user.currentPlan?.expired && "dark:bg-slate-500")}>
+                    <div className={cn("rounded-lg rounded-b-none border border-slate-300 bg-slate-50 px-2 py-2 dark:border-slate-700 dark:bg-slate-800", session?.user.currentPlan?.expired && "dark:bg-slate-500")}>
                         <label htmlFor="prompt-input" className="sr-only">Enter your prompt</label>
-                        <ChatTextarea chatSlug={slug} expired={session?.user.currentPlan?.expired as boolean}/>
+                        <ChatTextarea chatSlug={slug} expired={session?.user.currentPlan?.expired as boolean} />
                     </div>
                     {/* <SendChatIcon chatSlug={slug} /> */}
                 </div>
