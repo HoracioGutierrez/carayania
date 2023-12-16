@@ -13,13 +13,13 @@ const config = {
     callbacks: {
         async authorized({ auth , request }) {
 
-            if(request.url === "http://localhost:3000/") return true
+            if(request.url === process.env.NEXTAUTH_URL) return true
 
             if(request.url.includes("/share/")) return true
 
             if(request.url.includes("/chat/")){
                 if(!auth) {
-                    return NextResponse.redirect("http://localhost:3000/")
+                    return NextResponse.redirect(process.env.NEXTAUTH_URL as string)
                 }
             }
 
