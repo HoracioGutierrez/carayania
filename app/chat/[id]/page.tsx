@@ -1,10 +1,10 @@
-import { Share2Icon } from 'lucide-react';
+import { auth } from '@/auth';
 import ChatForm from '@/components/ChatForm';
 import ChatMessagesList from '@/components/ChatMessagesList';
 import ChatTextarea from '@/components/ChatTextarea';
+import { cn } from '@/lib/utils';
 import { getMessagesFromUserChat } from '@/actions/getMessagesFromUserChat';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import SendChatIcon from '@/components/SendChatIcon';
 
 
 interface Props {
@@ -15,29 +15,22 @@ interface Props {
 
 export default async function page({ params: { id: slug } }: Props) {
 
+    const session = await auth()
     const { payload } = await getMessagesFromUserChat(slug)
-    
+
 
     return (
         <main className='p-2 pt-[96px] grow max-h-screen flex flex-col'>
             <ScrollArea className='h-screen container py-4'>
-                <ChatMessagesList chatSlug={slug} payload={payload}/>
+                <ChatMessagesList chatSlug={slug} payload={payload} userImageURL={session?.user.image as string} />
             </ScrollArea>
-            <ChatForm chatSlug={slug}>
-                <div className="mb-4 w-full ">
-                    <div className="rounded-lg rounded-b-none border border-slate-300 bg-slate-50 px-2 py-2 dark:border-slate-700 dark:bg-slate-800">
+            <ChatForm chatSlug={slug} expired={session?.user.currentPlan?.expired as boolean}>
+                <div className="mb-4 w-full relative">
+                    <div className={cn("rounded-lg rounded-b-none border border-slate-300 bg-slate-50 px-2 py-2 dark:border-slate-700 dark:bg-slate-800",session?.user.currentPlan?.expired && "dark:bg-slate-500")}>
                         <label htmlFor="prompt-input" className="sr-only">Enter your prompt</label>
-                        <ChatTextarea chatSlug={slug} />
+                        <ChatTextarea chatSlug={slug} expired={session?.user.currentPlan?.expired as boolean}/>
                     </div>
-                    <div className="ml-2 flex items-center py-2">
-                        <div>
-                            <SendChatIcon chatSlug={slug} />
-                            <button type="button" className="ml-2 inline-flex items-center gap-x-2 rounded-lg bg-slate-700 px-4 py-2.5 text-center text-base font-medium text-slate-50 hover:bg-blue-600 focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900" >
-                                Share
-                                <Share2Icon />
-                            </button>
-                        </div>
-                    </div>
+                    {/* <SendChatIcon chatSlug={slug} /> */}
                 </div>
             </ChatForm>
         </main>
