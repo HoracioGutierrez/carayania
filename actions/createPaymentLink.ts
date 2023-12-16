@@ -11,7 +11,7 @@ const returnType = {
 export const createPaymentId = async (payload: any) => {
 
 
-    const client = new MercadoPagoConfig({ accessToken: "TEST-7625224674925986-070920-0871f36d6f33bc4c996d03f16d64b1bb-129738358", options: { timeout: 5000 } });
+    const client = new MercadoPagoConfig({ accessToken: process.env.MERCADOPAGO_ACCESS_TOKEN as string , options: { timeout: 5000 } });
     const preference = new Preference(client);
 
     try {

@@ -28,7 +28,7 @@ export default async function PrivateHome() {
                         <p>Plan actual : {session?.user.currentPlan?.maxQuantity} preguntas</p>
                         <p>Cant. hechas : {session?.user.currentPlan?.currentQuantity} preguntas</p>
                         <p>Expiró : {session?.user.currentPlan?.expired ? "Si" : "No"}</p>
-                        {session?.user.currentPlan?.expired && <PaymentButton userEmail={session?.user.email as string}/>}
+                        {!session?.user.currentPlan?.expired && <PaymentButton userEmail={session?.user.email as string}/>}
                     </div>
                 </header>
                 <section className='@container'>
