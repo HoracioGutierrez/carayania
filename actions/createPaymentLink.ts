@@ -27,9 +27,9 @@ export const createPaymentId = async (payload: any) => {
                     }
                 ],
                 back_urls: {
-                    success: "http://localhost:/3000" + "/success",
-                    failure: "http://localhost:/3000" + "/failure",
-                    pending: "http://localhost:/3000" + "/pending"
+                    success: process.env.NEXTAUTH_URL + "/success",
+                    failure: process.env.NEXTAUTH_URL + "/failure",
+                    pending: process.env.NEXTAUTH_URL + "/pending"
                 },
                 auto_return: "approved" as const,
             }
