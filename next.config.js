@@ -6,6 +6,9 @@ const nextConfig = {
                 hostname : "lh3.googleusercontent.com"
             }
         ]
+    },
+    env : {
+        MERCADOPAGO_CLIENT_ID : process.env.MERCADOPAGO_CLIENT_ID,
     }
 }
 

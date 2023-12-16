@@ -5,6 +5,7 @@ import { auth } from '@/auth';
 import { Button } from './ui/button';
 import CreateChatButton from './CreateChatButton';
 import DeleteChatButton from './DeleteChatButton';
+import PaymentButton from './PaymentButton';
 import SectionTitle from './SectionTitle';
 import ShareChatButton from './ShareChatButton';
 
@@ -27,6 +28,7 @@ export default async function PrivateHome() {
                         <p>Plan actual : {session?.user.currentPlan?.maxQuantity} preguntas</p>
                         <p>Cant. hechas : {session?.user.currentPlan?.currentQuantity} preguntas</p>
                         <p>Expiró : {session?.user.currentPlan?.expired ? "Si" : "No"}</p>
+                        {session?.user.currentPlan?.expired && <PaymentButton userEmail={session?.user.email as string}/>}
                     </div>
                 </header>
                 <section className='@container'>
