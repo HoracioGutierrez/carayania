@@ -35,17 +35,18 @@ model Session {
 }
 
 model User {
-  id            String        @id @default(auto()) @map("_id") @db.ObjectId
+  id            String    @id @default(auto()) @map("_id") @db.ObjectId
   name          String?
-  email         String?       @unique
+  email         String?   @unique
   emailVerified DateTime?
   image         String?
   accounts      Account[]
   sessions      Session[]
-  chats         ChatsOnUser[]
+  // chats         ChatsOnUser[]
   message       Message[]
-  currentPlan   Plan?         @relation(fields: [planId], references: [id])
-  planId        String?       @db.ObjectId
+  currentPlan   Plan?     @relation(fields: [planId], references: [id])
+  planId        String?   @db.ObjectId
+  chats         Chat[]
 }
 
 model VerificationToken {
@@ -58,12 +59,22 @@ model VerificationToken {
 }
 
 model Chat {
-  id           String        @id @default(auto()) @map("_id") @db.ObjectId
-  createdAt    DateTime?     @default(now())
-  deleted      Boolean       @default(false)
-  participants String[]
-  author       ChatsOnUser[]
-  message      Message[]
+  id          String    @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt   DateTime? @default(now())
+  deleted     Boolean   @default(false)
+  //participants String[]
+  //participants User[]   @relation(fields: [participantsId], references: [id])
+  // author       ChatsOnUser[]
+  author      User      @relation(fields: [authorId], references: [id])
+  authorId    String    @db.ObjectId
+  message     Message[]
+  slug        String    @unique
+  lastMessage String?
+}
+
+enum Role {
+  user
+  assistant
 }
 
 model Message {
@@ -76,6 +87,7 @@ model Message {
   deleted        Boolean   @default(false)
   chatIdRelation Chat      @relation(fields: [chatId], references: [id])
   chatId         String    @db.ObjectId
+  role            Role     @default(user)
 }
 
 enum PlanType {
@@ -96,13 +108,13 @@ model Plan {
   currentQuantity Int
   expired         Boolean   @default(false)
   tokenCountTotal Int       @default(0)
-  User User[]
+  User            User[]
 }
 
-model ChatsOnUser {
-  id     String @id @default(auto()) @map("_id") @db.ObjectId
-  chat   Chat   @relation(fields: [chatId], references: [id])
-  chatId String @db.ObjectId
-  user   User?  @relation(fields: [userId], references: [id])
-  userId String @db.ObjectId
-}
+// model ChatsOnUser {
+//   id     String @id @default(auto()) @map("_id") @db.ObjectId
+//   chat   Chat   @relation(fields: [chatId], references: [id])
+//   chatId String @db.ObjectId
+//   user   User?  @relation(fields: [userId], references: [id])
+//   userId String @db.ObjectId
+// }

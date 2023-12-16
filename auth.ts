@@ -10,7 +10,10 @@ const prisma = new PrismaClient()
 export const { handlers: { GET, POST }, auth } = NextAuth({
     adapter: PrismaAdapter(prisma),
     session: { strategy: "jwt" },
-    ...authConfig,
+    /* ...authConfig, */
+    providers : [
+        ...authConfig.providers
+    ],
     events: {
         async createUser({ user }) {
             await createPlanForNewUser(user.id)
@@ -19,7 +22,7 @@ export const { handlers: { GET, POST }, auth } = NextAuth({
     callbacks: {
         async session({ session, user }) {
 
-            const test = await prisma.user.findFirst({
+            const userFromDB = await prisma.user.findFirst({
                 where: {
                     email: session.user.email
                 },
@@ -30,9 +33,28 @@ export const { handlers: { GET, POST }, auth } = NextAuth({
                 }
             })
 
-            console.log(test)
+            prisma.$disconnect()
 
+            if(userFromDB) {
+                session.user = {
+                    name: userFromDB.name,
+                    email: userFromDB.email,
+                    image: userFromDB.image,
+                    id: userFromDB.id,
+                    planId: userFromDB.planId,
+                    chatId : null,
+                    plansIds : null,
+                    currentPlan : userFromDB.currentPlan,
+                    chats: userFromDB.chats,
+                    message: userFromDB.message
+                }
+            }
             return session
-        }
+        }/* ,
+        async authorized({request,auth}){
+            console.log({request})
+            console.log({auth})
+            return auth ? true : false
+        } */
     }
 })
