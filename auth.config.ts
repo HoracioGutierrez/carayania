@@ -13,7 +13,7 @@ const config = {
     callbacks: {
         async authorized({ auth , request }) {
 
-            if(request.url === process.env.NEXTAUTH_URL) return true
+            if(request.url === process.env.NEXTAUTH_URL || request.url == process.env.NEXTAUTH_URL + "/" ) return true
 
             if(request.url.includes("/share/")) return true
 
