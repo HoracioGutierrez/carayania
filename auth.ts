@@ -10,7 +10,6 @@ const prisma = new PrismaClient()
 export const { handlers: { GET, POST }, auth } = NextAuth({
     adapter: PrismaAdapter(prisma),
     session: { strategy: "jwt" },
-    /* ...authConfig, */
     providers : [
         ...authConfig.providers
     ],
@@ -20,6 +19,7 @@ export const { handlers: { GET, POST }, auth } = NextAuth({
         }
     },
     callbacks: {
+        ...authConfig.callbacks,
         async session({ session, user }) {
 
             const userFromDB = await prisma.user.findFirst({
@@ -50,11 +50,6 @@ export const { handlers: { GET, POST }, auth } = NextAuth({
                 }
             }
             return session
-        }/* ,
-        async authorized({request,auth}){
-            console.log({request})
-            console.log({auth})
-            return auth ? true : false
-        } */
+        }
     }
 })
