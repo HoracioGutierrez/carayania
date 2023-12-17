@@ -109,6 +109,8 @@ model Plan {
   expired         Boolean   @default(false)
   tokenCountTotal Int       @default(0)
   User            User[]
+  payment_id      String?
+  preference_id   String?
 }
 
 // model ChatsOnUser {

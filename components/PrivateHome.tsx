@@ -20,7 +20,7 @@ export default async function PrivateHome() {
                 <header className='border-b pb-2 gap-4 xs:gap-8 flex flex-col md:flex-row md:justify-between md:items-center  '>
                     <div className='flex items-center gap-4'>
                         <div className='relative w-[40px] h-[40px] xs:w-[60px] xs:h-[60px] '>
-                            <Image src={session?.user.image as string} alt="Profile Avatar" fill  className='rounded-full'/>
+                            <Image src={session?.user.image as string} alt="Profile Avatar" fill className='rounded-full' />
                         </div>
                         <SectionTitle className='pb-0 border-b-0'>{session?.user.name}</SectionTitle>
                     </div>
@@ -28,7 +28,7 @@ export default async function PrivateHome() {
                         <p>Plan actual : {session?.user.currentPlan?.maxQuantity} preguntas</p>
                         <p>Cant. hechas : {session?.user.currentPlan?.currentQuantity} preguntas</p>
                         <p>Expiró : {session?.user.currentPlan?.expired ? "Si" : "No"}</p>
-                        <PaymentButton userEmail={session?.user.email as string}/>
+                        {session?.user.currentPlan?.expired && <PaymentButton userEmail={session?.user.email as string} />}
                     </div>
                 </header>
                 <section className='@container'>
