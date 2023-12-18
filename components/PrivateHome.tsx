@@ -15,7 +15,7 @@ export default async function PrivateHome() {
     const session = await auth()
 
     return (
-        <main className='p-2 pt-[96px] grow '>
+        <main className='p-2 grow'>
             <div className="container px-2">
                 <header className='border-b pb-2 gap-4 xs:gap-8 flex flex-col md:flex-row md:justify-between md:items-center  '>
                     <div className='flex items-center gap-4'>
@@ -31,25 +31,28 @@ export default async function PrivateHome() {
                         {session?.user.currentPlan?.expired && <PaymentButton userEmail={session?.user.email as string} />}
                     </div>
                 </header>
-                <section className='@container'>
+                <section className='@container/section'>
                     <header className='flex items-center py-4 gap-2'>
                         <h2 className='text-xl font-bold'>Chats</h2>
                         <CreateChatButton disabled={session?.user.currentPlan?.expired as boolean} userId={session?.user.id as string} rounded />
                     </header>
-                    <div className='grid gap-4 @md:grid-cols-2 @xl:grid-cols-3 @3xl:grid-cols-4'>
+                    <div className='grid gap-4 @md/section:grid-cols-2 @xl/section:grid-cols-3 @3xl/section:grid-cols-4'>
                         {session?.user.chats.length && session?.user.chats.length > 0 ? (
                             <>
                                 {session?.user.chats.map((chat: any) => {
+                                    //<article key={chat.id} className='flex flex-wrap items-center gap-4 xs:gap-4 mt-4 hover:scale-105 transition-transform duration-300 content-between'>
+                                    //<div className='grid place-content-center w-[40px] h-[40px] xs:w-[60px] xs:h-[60px] '>
+                                    //<div className='flex-1'>
                                     return (
-                                        <article key={chat.id} className='flex flex-wrap items-center gap-4 xs:gap-4 mt-4 p-2 shadow-md rounded-sm hover:scale-105 transition-transform duration-300 bg-secondary dark:bg-secondary content-between'>
-                                            <div className='grid place-content-center w-[40px] h-[40px] xs:w-[60px] xs:h-[60px] '>
+                                        <article key={chat.id} className='bg-secondary p-2 shadow-md rounded-sm chat-article @container/article @[320px]/article:grid-cols-[1fr_120px]'>
+                                            <div className='flex chat-article__header @[320px]/article:col-start-1 @[320px]/article:col-end-2'>
                                                 <MessageSquareIcon />
-                                            </div>
-                                            <div className='flex-1'>
                                                 <h3 className='font-bold'>{chat.slug}</h3>
-                                                <p className='text-xs text-gray-400 max-h-20 overflow-hidden text-clip'>{chat.lastMessage || "Aun no hay mensajes en este chat "}</p>
                                             </div>
-                                            <div className='flex gap-2 justify-end grow'>
+                                            <div className='max-h-20 chat-article__content @[320px]/article:col-start-1 @[320px]/article:col-end-2'>
+                                                <p className='text-xs text-gray-400 line-clamp-2 text-balanced'>{chat.lastMessage || "Aun no hay mensajes en este chat "}</p>
+                                            </div>
+                                            <div className='flex items-center justify-end chat-article__actions @[320px]/article:row-start-1 @[320px]/article:row-end-3 @[320px]/article:col-start-2 @[320px]/article:self-stretch'>
                                                 <DeleteChatButton chatId={chat.id} />
                                                 <ShareChatButton slug={chat.slug} />
                                                 <Button asChild size={"icon"} variant={"ghost"}>
