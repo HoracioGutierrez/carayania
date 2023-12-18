@@ -1,5 +1,6 @@
-import { FacebookIcon, InstagramIcon, TwitterIcon } from 'lucide-react';
+import { GithubIcon, InstagramIcon, LinkedinIcon } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 import smallAvatar from '../assets/small-avatar.png';
 
 
@@ -13,27 +14,27 @@ export default function LayoutFooter() {
                     </div>
                     <ul className="flex flex-wrap items-center space-x-4 sm:space-x-8">
                         <li>
-                            <a rel="noopener noreferrer" href="#">Terms of Use</a>
+                            <Link href='/terms-of-use'> Terms of Use</Link>
                         </li>
                         <li>
-                            <a rel="noopener noreferrer" href="#">Privacy</a>
+                            <Link href='/privacy-policy'> Privacy</Link>
                         </li>
                     </ul>
                 </div>
                 <ul className="flex flex-wrap pl-3 space-x-4 sm:space-x-8">
                     <li>
-                        <a rel="noopener noreferrer" href="#">
+                        <a target='_blank' rel="noopener noreferrer" href="https://instagram.com/horagutierrez">
                             <InstagramIcon />
                         </a>
                     </li>
                     <li>
-                        <a rel="noopener noreferrer" href="#">
-                            <FacebookIcon />
+                        <a target='_blank' rel="noopener noreferrer" href="https://www.linkedin.com/in/horacioegutierrez">
+                            <LinkedinIcon />
                         </a>
                     </li>
                     <li>
-                        <a rel="noopener noreferrer" href="#">
-                            <TwitterIcon />
+                        <a target='_blank' rel="noopener noreferrer" href="https://github.com/HoracioGutierrez">
+                            <GithubIcon />
                         </a>
                     </li>
                 </ul>
