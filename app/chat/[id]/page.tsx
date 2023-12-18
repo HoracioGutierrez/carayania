@@ -30,7 +30,6 @@ export default async function page({ params: { id: slug } }: Props) {
                         <label htmlFor="prompt-input" className="sr-only">Enter your prompt</label>
                         <ChatTextarea chatSlug={slug} expired={session?.user.currentPlan?.expired as boolean} />
                     </div>
-                    {/* <SendChatIcon chatSlug={slug} /> */}
                 </div>
             </ChatForm>
         </main>

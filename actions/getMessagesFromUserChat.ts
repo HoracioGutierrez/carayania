@@ -37,7 +37,6 @@ export const getMessagesFromUserChat = async (chatSlug: string) => {
         }
 
     } catch (error) {
-        console.log(error)
         return {
             ...returnType,
             error: true,

@@ -116,27 +116,9 @@
 }
 
 .chat-article {
-  /* @apply grid gap-2 grid-rows-[min-content_1fr_min-content]; */
   display: grid;
   grid-template-rows: min-content 1fr min-content;
   grid-gap: 0.5rem;
   container-name: article;
 
-  /* &__content {
-    @container article (min-width: 360px) {
-      grid-area: content;
-    }
-  }
-
-  &__actions {
-    @container article (min-width: 360px) {
-      grid-area: actions;
-    }
-  } */
-
-  /* @container article (min-width: 360px) {
-    grid-template-columns: 1fr 120px;
-    grid-template-areas : "header actions"
-    "content actions";
-  } */
 }

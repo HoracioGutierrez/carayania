@@ -42,7 +42,6 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
-  // chats         ChatsOnUser[]
   message       Message[]
   currentPlan   Plan?     @relation(fields: [planId], references: [id])
   planId        String?   @db.ObjectId
@@ -62,9 +61,6 @@ model Chat {
   id          String    @id @default(auto()) @map("_id") @db.ObjectId
   createdAt   DateTime? @default(now())
   deleted     Boolean   @default(false)
-  //participants String[]
-  //participants User[]   @relation(fields: [participantsId], references: [id])
-  // author       ChatsOnUser[]
   author      User      @relation(fields: [authorId], references: [id])
   authorId    String    @db.ObjectId
   message     Message[]
@@ -112,11 +108,3 @@ model Plan {
   payment_id      String?
   preference_id   String?
 }
-
-// model ChatsOnUser {
-//   id     String @id @default(auto()) @map("_id") @db.ObjectId
-//   chat   Chat   @relation(fields: [chatId], references: [id])
-//   chatId String @db.ObjectId
-//   user   User?  @relation(fields: [userId], references: [id])
-//   userId String @db.ObjectId
-// }
