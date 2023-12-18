@@ -1,6 +1,7 @@
 "use client"
 import { PlusCircleIcon } from 'lucide-react';
 import { toast } from 'sonner';
+import { useRouter } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import { createNewChatForUser } from '@/actions/createNewChatForUser';
 import { Button } from './ui/button';
@@ -22,20 +23,24 @@ type Props = {
 
 export default function CreateChatButton({ children = "crear chat", className, disabled, userId, rounded }: Props) {
 
+    const router = useRouter()
+
     const handleClick = async () => {
         if (disabled) {
             toast.error("No tienes mas creditos!")
         } else {
 
             toast.loading("Creando chat...")
-            const { error } = await createNewChatForUser(userId)
+            const { error, payload } = await createNewChatForUser(userId)
 
             if (error) toast.error("Error al crear el chat")
 
             toast.success("Chat creado!")
+            toast.loading("Redireccionando...")
+            router.push("/chat/" + payload.slug)
         }
     }
-    
+
     return (
         <TooltipProvider>
             <Tooltip delayDuration={200}>

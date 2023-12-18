@@ -26,6 +26,7 @@ export default function ChatForm({ children, chatSlug, expired }: Props) {
         if (!isLoading) {
             const input = e.target["chat-textarea"].value
             append({ content: input, role: 'user', id: chatSlug }, { data: { id: chatSlug } })
+            e.target.reset()
         }
     }
 

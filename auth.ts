@@ -28,7 +28,11 @@ export const { handlers: { GET, POST }, auth } = NextAuth({
                 },
                 include: {
                     currentPlan: true,
-                    chats: true,
+                    chats: {
+                        where : {
+                            deleted : false
+                        }
+                    },
                     message: true,
                 }
             })

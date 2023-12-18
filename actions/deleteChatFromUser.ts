@@ -14,9 +14,12 @@ export const deleteChatFromUser = async (chatId: string): Promise<{ error: boole
     try {
         const client = new PrismaClient()
 
-        const res = await client.chat.delete({
-            where: {
-                id: chatId
+        const res = await client.chat.update({
+            data : {
+                deleted : true
+            },
+            where : {
+                id : chatId
             }
         })
 
