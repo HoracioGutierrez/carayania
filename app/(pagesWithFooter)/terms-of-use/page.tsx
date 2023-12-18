@@ -4,7 +4,7 @@ export default function page() {
       <div className="container">
         <section id="terms-of-use">
           <h2 className="font-bold text-2xl mb-1">Términos y Condiciones de Uso</h2>
-          <p className="text-slate-400 mb-4 font-light">Bienvenidos a <span className="text-slate-200 font-normal">CarayanIA</span>, la aplicación de chatbot con IA que te permite interactuar con una versión virtual de personalidades famosas (el "Servicio"). Estos Términos y Condiciones de Uso regulan su uso de nuestro Servicio proporcionado por <span className="text-slate-200 font-normal">CarayanIA</span>, ubicada en Argentina.</p>
+          <p className="text-slate-400 mb-4 font-light">Bienvenidos a <span className="text-slate-200 font-normal">CarayanIA</span>, la aplicación de chatbot con IA que te permite interactuar con una versión virtual de personalidades famosas (el &quot;Servicio&quot;). Estos Términos y Condiciones de Uso regulan su uso de nuestro Servicio proporcionado por <span className="text-slate-200 font-normal">CarayanIA</span>, ubicada en Argentina.</p>
 
           <h2 className="font-bold text-2xl mb-1">Aceptación de Términos</h2>
           <p className="text-slate-400 mb-4 font-light">Al acceder o utilizar nuestro Servicio, usted acepta estar sujeto a estos Términos y Condiciones de Uso. Si no está de acuerdo con alguno de los términos establecidos aquí, no debe usar ni acceder a este Servicio.</p>
