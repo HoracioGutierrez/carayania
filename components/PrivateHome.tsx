@@ -40,17 +40,14 @@ export default async function PrivateHome() {
                         {session?.user.chats.length && session?.user.chats.length > 0 ? (
                             <>
                                 {session?.user.chats.map((chat: any) => {
-                                    //<article key={chat.id} className='flex flex-wrap items-center gap-4 xs:gap-4 mt-4 hover:scale-105 transition-transform duration-300 content-between'>
-                                    //<div className='grid place-content-center w-[40px] h-[40px] xs:w-[60px] xs:h-[60px] '>
-                                    //<div className='flex-1'>
                                     return (
-                                        <article key={chat.id} className='bg-secondary p-2 shadow-md rounded-sm chat-article @container/article @[320px]/article:grid-cols-[1fr_120px]'>
+                                        <article key={chat.id} className='bg-secondary p-2 shadow-md rounded-sm transition-[transform] hover:scale-105 chat-article @container/article @[320px]/article:grid-cols-[1fr_120px]'>
                                             <div className='flex chat-article__header @[320px]/article:col-start-1 @[320px]/article:col-end-2'>
                                                 <MessageSquareIcon />
                                                 <h3 className='font-bold'>{chat.slug}</h3>
                                             </div>
                                             <div className='max-h-20 chat-article__content @[320px]/article:col-start-1 @[320px]/article:col-end-2'>
-                                                <p className='text-xs text-gray-400 line-clamp-2 text-balanced'>{chat.lastMessage || "Aun no hay mensajes en este chat "}</p>
+                                                <p className='text-xs text-gray-400 line-clamp-3 text-balanced'>{chat.lastMessage || "Aun no hay mensajes en este chat "}</p>
                                             </div>
                                             <div className='flex items-center justify-end chat-article__actions @[320px]/article:row-start-1 @[320px]/article:row-end-3 @[320px]/article:col-start-2 @[320px]/article:self-stretch'>
                                                 <DeleteChatButton chatId={chat.id} />
