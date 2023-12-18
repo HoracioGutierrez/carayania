@@ -38,7 +38,7 @@ export default function CreateChatButton({ children = "crear chat", className, d
     
     return (
         <TooltipProvider>
-            <Tooltip>
+            <Tooltip delayDuration={200}>
                 <TooltipTrigger asChild>
                     <Button className={cn(className, disabled && "bg-red-500 hover:bg-slate-500")} onClick={handleClick} variant={rounded ? "ghost" : "default"} size={rounded ? "icon" : "default"}>
                         {rounded ? <PlusCircleIcon /> : children}

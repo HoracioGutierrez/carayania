@@ -35,8 +35,6 @@ export const savePlanRenewalForUser = async (planDetails: any, userId: string) =
         }
 
     } catch (error) {
-        console.log(error)
-        
         if(error instanceof Error) {
             return {
                 ...returnType,

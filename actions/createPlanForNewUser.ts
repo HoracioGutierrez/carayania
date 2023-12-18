@@ -32,7 +32,6 @@ export const createPlanForNewUser = async (userId: string) => {
         })
         client.$disconnect()
     } catch (error) {
-        console.log(error)
         if (error instanceof Error)
             return { ...returnType, error: true, errorMessage: error.message }
         else

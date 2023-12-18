@@ -36,7 +36,6 @@ export const deleteChatFromUser = async (chatId: string): Promise<{ error: boole
         }
 
     } catch (error) {
-        console.log(error)
         return {
             ...returnType,
             error: true,

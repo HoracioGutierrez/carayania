@@ -68,7 +68,6 @@ export const createNewChatForUser = async (userId: string): Promise<{ error: boo
 
 
     } catch (error) {
-        console.log(error)
         return {
             ...returnType,
             error: true,

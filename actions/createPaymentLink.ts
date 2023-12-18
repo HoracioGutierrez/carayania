@@ -38,7 +38,6 @@ export const createPaymentId = async (payload: any) => {
         return { ...returnType, payload: response.id }
 
     } catch (error) {
-        console.log(error)
         if (error instanceof Error)
             return { ...returnType, error: true, errorMessage: error.message }
         else
