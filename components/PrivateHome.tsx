@@ -2,6 +2,8 @@ import { EyeIcon, MessageSquareIcon } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { auth } from '@/auth';
+import { cn } from '@/lib/utils';
+import { Badge } from './ui/badge';
 import { Button } from './ui/button';
 import CreateChatButton from './CreateChatButton';
 import DeleteChatButton from './DeleteChatButton';
@@ -15,22 +17,54 @@ export default async function PrivateHome() {
     const session = await auth()
 
     return (
-        <main className='p-2 grow'>
-            <div className="container px-2">
-                <header className='border-b pb-2 gap-4 xs:gap-8 flex flex-col md:flex-row md:justify-between md:items-center  '>
-                    <div className='flex items-center gap-4'>
-                        <div className='relative w-[40px] h-[40px] xs:w-[60px] xs:h-[60px] '>
-                            <Image src={session?.user.image as string} alt="Profile Avatar" fill className='rounded-full' />
+        <main className='grow grid'>
+            <div className="container px-2 grid grid-rows-[min-content_1fr] lg:gap-8 lg:grid-cols-2 lg:grid-rows-1">
+                <section className=' gap-4 xs:gap-8 @container'>
+                    <div className='flex flex-col gap-6 @[695px]:flex-row justify-between'>
+                        <div className='flex items-start gap-4 flex-wrap'>
+                            <div className='relative w-[40px] h-[40px] xs:w-[60px] xs:h-[60px] '>
+                                <Image src={session?.user.image as string} alt="Profile Avatar" fill className='rounded-full' />
+                            </div>
+                            <div>
+                                <SectionTitle className='pb-0 border-b-0'>{session?.user.name}</SectionTitle>
+                                <p className='text-slate-600 text-sm font-light'>{session?.user.email}</p>
+                            </div>
+                            <div>
+                                <Badge variant={session?.user.currentPlan?.expired ? "destructive" : "default"} className={cn(!session?.user.currentPlan?.expired && 'bg-yellow-300')}>
+                                    {session?.user.currentPlan?.expired ? "Expirado" : "Premium Plan"}
+                                </Badge>
+                            </div>
                         </div>
-                        <SectionTitle className='pb-0 border-b-0'>{session?.user.name}</SectionTitle>
+                        <div >
+                            <div className='hidden lg:flex flex-col gap-8'>
+                                <p className='font-light text-sm'>
+                                    <span className='text-slate-400 font-bold text-lg'>Plan actual</span>
+                                    <br />
+                                    <span className='text-slate-600 text-xs'>
+                                        {session?.user.currentPlan?.name === "FREE" && "Su plan actual es gratuito y se crea automaticamente con su cuenta para que pruebes la plataforma. Después de que se termine, podés comprar un plan premium. Su plan actual tiene un limite de : "}
+                                    </span>
+                                    <br />
+                                    {session?.user.currentPlan?.maxQuantity} preguntas
+                                </p>
+                                <p className='font-light text-sm'>
+                                    <span className='text-slate-400 font-bold text-lg'>Cant. hechas</span>
+                                    <br />
+                                    <span className='text-slate-600 text-xs'>Esta es la cantidad de preguntas hechas por haber iniciado un chat o haber continuado chateando en una misma ventana de chat. De momento van : </span>
+                                    <br />
+                                    {session?.user.currentPlan?.currentQuantity} preguntas
+                                </p>
+                                <p className='font-light text-sm'>
+                                    <span className='text-slate-400 font-bold text-lg'>Expiró</span>
+                                    <br />
+                                    <span className='text-slate-600 text-xs'>Su plan expira cuando se agotan las preguntas ya sea por haber creado la misma cantidad de chats nuevos que su limite de plan actual con una pregunta por chat o bien habiendo hecho tantas preguntas en un solo chat como numero de limite de plan actual </span>
+                                    <br />
+                                    {session?.user.currentPlan?.expired ? "Si" : "No"}
+                                </p>
+                            </div>
+                            {session?.user.currentPlan?.expired && <PaymentButton userEmail={session?.user.email as string} />}
+                        </div>
                     </div>
-                    <div>
-                        <p>Plan actual : {session?.user.currentPlan?.maxQuantity} preguntas</p>
-                        <p>Cant. hechas : {session?.user.currentPlan?.currentQuantity} preguntas</p>
-                        <p>Expiró : {session?.user.currentPlan?.expired ? "Si" : "No"}</p>
-                        {session?.user.currentPlan?.expired && <PaymentButton userEmail={session?.user.email as string} />}
-                    </div>
-                </header>
+                </section>
                 <section className='@container/section'>
                     <header className='flex items-center py-4 gap-2'>
                         <h2 className='text-xl font-bold'>Chats</h2>

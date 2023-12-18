@@ -45,7 +45,7 @@ function PaymentButton({ userEmail }: PaymentButtonProps) {
     }
 
     return (
-        <div className="max-w-md mx-auto">
+        <div className="translate-y-[-16px]">
             {preferenceId && <Wallet customization={{ texts: { valueProp: "practicality", action: "pay" } }} initialization={{ preferenceId: preferenceId }} />}
         </div>
     )
