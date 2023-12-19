@@ -5,7 +5,7 @@ import SignInButton from './SignInButton';
 
 export default function PublicHome() {
     return (
-        <main className='p-2 pt-[96px] md:p-4 grow flex justify-center items-center'>
+        <main className='p-2 md:p-4 grow flex justify-center items-center'>
             <div className="container h-full grid grid-cols-1 grid-rows-[minmax(min-content,_300px)_1fr] md:grid-rows-1 md:grid-cols-2 gap-8">
                 <section className="home__image md:self-center max-h-96 h-full lg:max-h-[550px] relative">
                     <Image src={bigBackground} alt="background" width={800} height={600} className=" h-full w-full object-cover rounded-sm drop-shadow-xl" />

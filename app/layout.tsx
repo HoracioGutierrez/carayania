@@ -21,8 +21,8 @@ export default function RootLayout({
 }) {
 
   return (
-    <html lang="en" className='min-h-screen'>
-      <body className={cn(inter.className,"flex flex-col min-h-[inherit] h-full bg-gradient-to-br from-slate-500 to-slate-50 dark:from-slate-950 dark:to-slate-700")}>
+    <html lang="en" className='min-h-full h-full'>
+      <body className={cn(inter.className,"flex flex-col min-h-full bg-gradient-to-br from-slate-500 to-slate-50 dark:from-slate-950 dark:to-slate-700")}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

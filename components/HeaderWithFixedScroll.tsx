@@ -14,7 +14,7 @@ export default function HeaderWithFixedScroll({ children }: Props) {
         const header = document.querySelector('header')
         const scrollListener = () => {
             if (header)
-                if (window.scrollY > header.offsetTop) {
+                if (window.scrollY > 20) {
                     header.classList.add("header-fixed")
                 } else {
                     header.classList.remove("header-fixed")
