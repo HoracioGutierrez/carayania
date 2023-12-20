@@ -1,5 +1,6 @@
 "use server"
 
+import { revalidatePath } from 'next/cache';
 import { PrismaClient } from '@prisma/client';
 
 
@@ -26,6 +27,9 @@ export const saveTitleToChat = async (chatSlug: string, title: string) => {
         if(!chat) {
             throw new Error("Chat not found")
         }
+
+        revalidatePath(`/chat/${chatSlug}`)
+        revalidatePath(`/`)
 
         return {
             ...returnType,

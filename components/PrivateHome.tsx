@@ -84,7 +84,7 @@ export default async function PrivateHome() {
                                         <article key={chat.id} className='bg-secondary p-2 shadow-md rounded-sm transition-[transform] hover:scale-105 chat-article @container/article @[320px]/article:grid-cols-[1fr_120px]'>
                                             <div className='flex chat-article__header @[320px]/article:col-start-1 @[320px]/article:col-end-2'>
                                                 <MessageSquareIcon />
-                                                <h3 className='font-bold'>{chat.slug}</h3>
+                                                <h3 className='font-bold'>{chat.title || "Sin Titulo"}</h3>
                                             </div>
                                             <div className='max-h-20 chat-article__content @[320px]/article:col-start-1 @[320px]/article:col-end-2'>
                                                 <p className='text-xs text-gray-400 line-clamp-3 text-balanced'>{chat.lastMessage || "Aun no hay mensajes en este chat "}</p>

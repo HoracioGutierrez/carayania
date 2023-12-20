@@ -20,12 +20,12 @@ type Props = {
 export default function ChatTitle({ title, chatSlug }: Props) {
 
     const [currentTitle, setCurrentTitle] = useState(title || "Sin Titulo")
-    const [isEditing, setIsEditing] = useState(true)
+    const [isEditing, setIsEditing] = useState(false)
     const inputRef = useRef<HTMLInputElement>(null)
 
     const toggleEdit = () => {
         setIsEditing(!isEditing)
-        setCurrentTitle(title)
+        setCurrentTitle(title || "Sin Titulo")
     }
 
     const handleEdit = async (e: any) => {
