@@ -4,6 +4,12 @@ import { TrashIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { deleteChatFromUser } from '@/actions/deleteChatFromUser';
 import { Button } from './ui/button';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from './ui/tooltip';
 
 
 type Props = {
@@ -25,8 +31,17 @@ export default function DeleteChatButton({ children, className, disabled, chatId
     }
 
     return (
-        <Button size={'icon'} variant={"ghost"} className={cn(className, disabled && "bg-slate-500 hover:bg-slate-500")} onClick={handleClick}>
-            <TrashIcon className='stroke-red-500'/>
-        </Button>
+        <TooltipProvider>
+            <Tooltip delayDuration={200}>
+                <TooltipTrigger asChild>
+                    <Button size={'icon'} variant={"ghost"} className={cn(className, disabled && "bg-slate-500 hover:bg-slate-500")} onClick={handleClick}>
+                        <TrashIcon className='stroke-red-500' />
+                    </Button>
+                </TooltipTrigger>
+                <TooltipContent>
+                    <p>Borrar Chat</p>
+                </TooltipContent>
+            </Tooltip>
+        </TooltipProvider>
     )
 }

@@ -10,6 +10,12 @@ import DeleteChatButton from './DeleteChatButton';
 import PaymentButton from './PaymentButton';
 import SectionTitle from './SectionTitle';
 import ShareChatButton from './ShareChatButton';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from './ui/tooltip';
 
 
 export default async function PrivateHome() {
@@ -86,11 +92,20 @@ export default async function PrivateHome() {
                                             <div className='flex items-center justify-end chat-article__actions @[320px]/article:row-start-1 @[320px]/article:row-end-3 @[320px]/article:col-start-2 @[320px]/article:self-stretch'>
                                                 <DeleteChatButton chatId={chat.id} />
                                                 <ShareChatButton slug={chat.slug} />
-                                                <Button asChild size={"icon"} variant={"ghost"}>
-                                                    <Link href={`/chat/${chat.slug}`}>
-                                                        <EyeIcon className='cursor-pointer' />
-                                                    </Link>
-                                                </Button>
+                                                <TooltipProvider>
+                                                    <Tooltip delayDuration={200}>
+                                                        <TooltipTrigger asChild>
+                                                            <Button asChild size={"icon"} variant={"ghost"}>
+                                                                <Link href={`/chat/${chat.slug}`}>
+                                                                    <EyeIcon className='cursor-pointer' />
+                                                                </Link>
+                                                            </Button>
+                                                        </TooltipTrigger>
+                                                        <TooltipContent>
+                                                            <p>Ver Chat</p>
+                                                        </TooltipContent>
+                                                    </Tooltip>
+                                                </TooltipProvider >
                                             </div>
                                         </article>
                                     )

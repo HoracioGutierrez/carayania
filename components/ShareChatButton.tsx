@@ -3,10 +3,16 @@
 import { Share2Icon } from 'lucide-react';
 import { toast } from 'sonner';
 import { Button } from './ui/button';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from './ui/tooltip';
 
 
 type Props = {
-    slug : string
+    slug: string
 }
 
 export default function ShareChatButton({ slug }: Props) {
@@ -21,8 +27,17 @@ export default function ShareChatButton({ slug }: Props) {
     }
 
     return (
-        <Button onClick={handleClick} size={"icon"} variant={"ghost"}>
-            <Share2Icon width={24} height={24}/>
-        </Button>
+        <TooltipProvider>
+            <Tooltip delayDuration={200}>
+                <TooltipTrigger asChild>
+                    <Button onClick={handleClick} size={"icon"} variant={"ghost"}>
+                        <Share2Icon width={24} height={24} />
+                    </Button>
+                </TooltipTrigger>
+                <TooltipContent>
+                    <p>Compartir Chat</p>
+                </TooltipContent>
+            </Tooltip>
+        </TooltipProvider >
     )
 }
