@@ -11,6 +11,16 @@ const returnType = {
 export const getMessagesFromUserChat = async (chatSlug: string) => {
     try {
         const client = new PrismaClient()
+
+        const chatWithMessages = await client.chat.findFirst({
+            where : {
+                slug: chatSlug
+            },
+            include : {
+                message: true
+            }
+        })
+
         const messages = await client.message.findMany({
             where: {
                 chatIdRelation: {
@@ -19,6 +29,9 @@ export const getMessagesFromUserChat = async (chatSlug: string) => {
             },
             orderBy : {
                 createdAt: "asc"
+            },
+            include : {
+                chatIdRelation: true,
             }
         })
 
@@ -26,7 +39,7 @@ export const getMessagesFromUserChat = async (chatSlug: string) => {
             client.$disconnect()
             return {
                 ...returnType,
-                payload: messages
+                payload: chatWithMessages,
             }
         } else {
             return {

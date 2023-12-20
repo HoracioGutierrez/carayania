@@ -66,6 +66,7 @@ model Chat {
   message     Message[]
   slug        String    @unique
   lastMessage String?
+  title      String?
 }
 
 enum Role {
