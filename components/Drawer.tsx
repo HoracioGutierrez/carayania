@@ -1,6 +1,12 @@
 "use client"
 
-import { MenuIcon } from 'lucide-react';
+import {
+  GithubIcon,
+  InstagramIcon,
+  LinkedinIcon,
+  MenuIcon,
+} from 'lucide-react';
+import Link from 'next/link';
 import { Button } from './ui/button';
 import {
   Sheet,
@@ -31,7 +37,22 @@ export default function Drawer({ session }: DrawerProps) {
                     <SheetTitle>Navegacion</SheetTitle>
                 </SheetHeader>
                 <nav className="flex flex-col gap-4">
-                    <ThemeTogglerButton/>
+                    <ThemeTogglerButton />
+                    <Link href='/'> Home </Link>
+                    <Link href='/about-us'> Sobre Nosotros</Link>
+                    <Link href='/terms-of-use'> Terminos de Uso</Link>
+                    <Link href='/privacy-policy'> Privacidad</Link>
+                    <div className='flex justify-center gap-8'>
+                        <a target='_blank' rel="noopener noreferrer" href="https://instagram.com/horagutierrez">
+                            <InstagramIcon />
+                        </a>
+                        <a target='_blank' rel="noopener noreferrer" href="https://www.linkedin.com/in/horacioegutierrez">
+                            <LinkedinIcon />
+                        </a>
+                        <a target='_blank' rel="noopener noreferrer" href="https://github.com/HoracioGutierrez">
+                            <GithubIcon />
+                        </a>
+                    </div>
                     {session ? <SignOutButton /> : <SignInButton />}
                 </nav>
             </SheetContent>

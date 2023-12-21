@@ -152,3 +152,21 @@ body {
     white-space: pre-wrap; 
     height: 0;
 }
+
+.customBounce {
+  animation: customBounce 0.3s infinite;
+}
+
+@keyframes customBounce {
+  
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-20deg);
+  }
+  100% {
+    transform: rotate(20deg);
+  }
+
+}

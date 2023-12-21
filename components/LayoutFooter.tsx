@@ -7,21 +7,24 @@ import smallAvatar from '../assets/small-avatar.png';
 export default function LayoutFooter() {
     return (
         <footer className="px-4 py-4 dark:transparent dark:text-gray-400 text-xs">
-            <div className="container flex flex-wrap items-center justify-center mx-auto space-y-4 xs:justify-between xs:space-y-0">
-                <div className="flex flex-row pr-3 space-x-4 sm:space-x-8">
+            <div className="container flex flex-col sm:flex-row flex-wrap items-center justify-center mx-auto space-y-4 xs:justify-between xs:space-y-0">
+                <div className="flex flex-col justify-center items-center xs:flex-row">
                     <div className="flex items-center justify-center flex-shrink-0 w-12 h-12 rounded-full ">
                         <Image src={smallAvatar} alt="Profile Avatar" width={32} height={32} className='rounded-full' />
                     </div>
-                    <ul className="flex flex-wrap items-center space-x-4 sm:space-x-8">
+                    <ul className="flex flex-col xs:flex-row gap-2 xs:gap-4 flex-wrap items-center mx-0 sm:space-x-8">
                         <li>
-                            <Link href='/terms-of-use'> Terms of Use</Link>
+                            <Link href='/about-us'> Sobre Nosotros</Link>
                         </li>
                         <li>
-                            <Link href='/privacy-policy'> Privacy</Link>
+                            <Link href='/terms-of-use'> Terminos de Uso</Link>
+                        </li>
+                        <li>
+                            <Link href='/privacy-policy'> Privacidad</Link>
                         </li>
                     </ul>
                 </div>
-                <ul className="flex flex-wrap pl-3 space-x-4 sm:space-x-8">
+                <ul className="flex flex-wrap pl-0 xs:pl-3 space-x-4 sm:space-x-8">
                     <li>
                         <a target='_blank' rel="noopener noreferrer" href="https://instagram.com/horagutierrez">
                             <InstagramIcon />
