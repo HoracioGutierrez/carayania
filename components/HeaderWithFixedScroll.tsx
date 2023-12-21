@@ -26,7 +26,7 @@ export default function HeaderWithFixedScroll({ children }: Props) {
     }, [])
 
     return (
-        <header className={cn("py-4 h-24 transition-all duration-300")}>
+        <header className={cn("py-2 h-24 transition-all duration-300")}>
             {children}
         </header>
     )
