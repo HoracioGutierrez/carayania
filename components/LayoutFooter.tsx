@@ -14,29 +14,29 @@ export default function LayoutFooter() {
                     </div>
                     <ul className="flex flex-col xs:flex-row gap-2 xs:gap-4 flex-wrap items-center mx-0 sm:space-x-8">
                         <li>
-                            <Link href='/about-us'> Sobre Nosotros</Link>
+                            <Link href='/about-us' className='hover:text-accent-500 transition-[color] duration-300'> Sobre Nosotros</Link>
                         </li>
                         <li>
-                            <Link href='/terms-of-use'> Terminos de Uso</Link>
+                            <Link href='/terms-of-use' className='hover:text-accent-500 transition-[color] duration-300'> Terminos de Uso</Link>
                         </li>
                         <li>
-                            <Link href='/privacy-policy'> Privacidad</Link>
+                            <Link href='/privacy-policy' className='hover:text-accent-500 transition-[color] duration-300'> Privacidad</Link>
                         </li>
                     </ul>
                 </div>
                 <ul className="flex flex-wrap pl-0 xs:pl-3 space-x-4 sm:space-x-8">
                     <li>
-                        <a target='_blank' rel="noopener noreferrer" href="https://instagram.com/horagutierrez">
+                        <a target='_blank' rel="noopener noreferrer" href="https://instagram.com/horagutierrez" className='hover:text-accent-500 transition-[color] duration-300'>
                             <InstagramIcon />
                         </a>
                     </li>
                     <li>
-                        <a target='_blank' rel="noopener noreferrer" href="https://www.linkedin.com/in/horacioegutierrez">
+                        <a target='_blank' rel="noopener noreferrer" href="https://www.linkedin.com/in/horacioegutierrez" className='hover:text-accent-500 transition-[color] duration-300'>
                             <LinkedinIcon />
                         </a>
                     </li>
                     <li>
-                        <a target='_blank' rel="noopener noreferrer" href="https://github.com/HoracioGutierrez">
+                        <a target='_blank' rel="noopener noreferrer" href="https://github.com/HoracioGutierrez" className='hover:text-accent-500 transition-[color] duration-300'>
                             <GithubIcon />
                         </a>
                     </li>

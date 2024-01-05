@@ -3,7 +3,6 @@ import { Inter } from 'next/font/google';
 import type { Metadata } from 'next';
 import { Toaster } from 'sonner';
 import { cn } from '@/lib/utils';
-import LayoutHeader from '@/components/LayoutHeader';
 import { ThemeProvider } from '@/components/ThemeProvider';
 
 
@@ -29,7 +28,6 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <LayoutHeader/>
           {children}
           <Toaster position='top-right'/>
         </ThemeProvider>

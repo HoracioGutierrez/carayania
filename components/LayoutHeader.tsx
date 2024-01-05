@@ -22,6 +22,7 @@ export default async function LayoutHeader() {
                 </Link>
                 <div className="items-center flex">
                     <nav className='hidden md:flex gap-2'>
+                        <Link href={"/test"}>test</Link>
                         <ThemeTogglerButton />
                         {session ? <SignOutButton /> : <SignInButton />}
                     </nav>
