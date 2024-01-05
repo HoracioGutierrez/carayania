@@ -1,21 +1,4 @@
-import { EyeIcon, MessageSquareIcon } from 'lucide-react';
-import Image from 'next/image';
-import Link from 'next/link';
 import { auth } from '@/auth';
-import { cn } from '@/lib/utils';
-import { Badge } from './ui/badge';
-import { Button } from './ui/button';
-import CreateChatButton from './CreateChatButton';
-import DeleteChatButton from './DeleteChatButton';
-import PaymentButton from './PaymentButton';
-import SectionTitle from './SectionTitle';
-import ShareChatButton from './ShareChatButton';
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from './ui/tooltip';
 
 
 export default async function PrivateHome() {
@@ -25,7 +8,7 @@ export default async function PrivateHome() {
     return (
         <main className='grow grid'>
             <div className="container px-2 grid grid-rows-[min-content_1fr] lg:gap-8 lg:grid-cols-2 lg:grid-rows-1">
-                <section className=' gap-4 xs:gap-8 @container'>
+                {/* <section className=' gap-4 xs:gap-8 @container'>
                     <div className='flex flex-col gap-6 @[695px]:flex-row justify-between'>
                         <div className='flex items-start gap-4 flex-wrap'>
                             <div className='relative w-[40px] h-[40px] xs:w-[60px] xs:h-[60px] '>
@@ -115,7 +98,7 @@ export default async function PrivateHome() {
                             <p>No tienes chats!</p>
                         )}
                     </div>
-                </section>
+                </section> */}
             </div >
         </main >
     )
