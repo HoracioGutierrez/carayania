@@ -22,7 +22,7 @@ export default function SendChatIcon({ chatSlug, isLoading, stop, expired }: Pro
     }
 
     return (
-        <button onClick={handleClick} type="submit" className={cn("inline-flex items-center gap-x-2 rounded-lg bg-blue-600 px-4 py-2.5 text-center text-base font-medium text-slate-50 hover:bg-blue-800 focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 absolute right-4 top-1/2 -translate-y-1/2",expired && "bg-red-500 hover:bg-red-800 dark:focus:ring-red-900")} >
+        <button onClick={handleClick} type="submit" className={cn("inline-flex items-center gap-x-2 rounded-lg bg-primary-500 px-4 py-2.5 text-center text-base font-medium text-slate-50 hover:bg-secondary-500 hover:text-text-50 focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 absolute right-4 top-1/2 -translate-y-1/2",expired && "bg-red-500 hover:bg-red-800 dark:focus:ring-red-900" , isLoading && "bg-accent-500")} >
             {isLoading ? "Stop" : expired ? "No tienes mas creditos!" : "Generar"}
             {isLoading ? <StopCircleIcon /> : expired ? <XCircleIcon/> :<SendIcon />}
         </button>

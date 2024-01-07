@@ -45,7 +45,7 @@ export default function ChatMessagesList({ chatSlug, payload, userImageURL }: Pr
     }
 
     return (
-        <div className='flex flex-col gap-4'>
+        <div className='flex flex-col gap-4 grow p-2'>
             {messages.map((message: any) => {
                 return (
                     <article key={message.id} className={cn("flex items-start gap-2 group", message.role == "user" ? "flex-row-reverse from-transparent dark:to-[rgba(255,255,255,0.1)] to-[rgba(255,255,255,0.3)] bg-gradient-to-r" : "")}>

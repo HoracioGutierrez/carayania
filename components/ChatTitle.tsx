@@ -40,7 +40,7 @@ export default function ChatTitle({ title, chatSlug }: Props) {
     }
 
     return (
-        <div className='flex group mb-8 items-center gap-2'>
+        <div className='flex group mb-8 items-center gap-2 p-2'>
             {isEditing
                 ? (
                     <p className='text-5xl'>

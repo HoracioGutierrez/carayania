@@ -11,7 +11,7 @@ export default function SignOutButton() {
     }
 
     return (
-        <Button onClick={handleClick} asChild className='w-8 h-8' variant={"ghost"} size={"icon"}>
+        <Button onClick={handleClick} asChild className='w-8 h-8 hover:bg-transparent hover:stroke-accent-500 hover:cursor-pointer' variant={"ghost"} size={"icon"}>
             <LogOut/>
         </Button>
     )

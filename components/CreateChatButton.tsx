@@ -18,10 +18,11 @@ type Props = {
     className?: string,
     disabled?: boolean,
     userId: string,
-    rounded?: boolean
+    rounded?: boolean,
+    variant?: "default" | "secondary" | "link" | "destructive" | "outline" | "ghost" | null | undefined
 }
 
-export default function CreateChatButton({ children = "crear chat", className, disabled, userId, rounded }: Props) {
+export default function CreateChatButton({ children = "crear chat", className, disabled, userId, rounded , variant }: Props) {
 
     const router = useRouter()
 
@@ -45,7 +46,7 @@ export default function CreateChatButton({ children = "crear chat", className, d
         <TooltipProvider>
             <Tooltip delayDuration={200}>
                 <TooltipTrigger asChild>
-                    <Button className={cn(className, disabled && "bg-red-500 hover:bg-slate-500")} onClick={handleClick} variant={rounded ? "ghost" : "default"} size={rounded ? "icon" : "default"}>
+                    <Button className={cn(className,disabled && "sm:hover:bg-red-500 sm:border-red-950","hover:bg-transparent")} onClick={handleClick} variant={variant ? variant : "default"} size={rounded ? "icon" : "default"}>
                         {rounded ? <PlusCircleIcon /> : children}
                     </Button>
                 </TooltipTrigger>

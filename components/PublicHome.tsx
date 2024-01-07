@@ -14,7 +14,7 @@ export default function PublicHome() {
                 <div className='flex flex-col gap-4'>
                     <div>
                         <h2 className="scroll-m-20 text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight xl:text-8xl text-gradient-p-to-a text-center">Carayan IA</h2>
-                        <p className="text-base md:text-xl lg:text-2xl font-extralight dark:text-slate-600 text-center">El chatbot de modas mas chic y canchero</p>
+                        <p className="text-base md:text-xl lg:text-2xl font-extralight text-muted-foreground dark:text-slate-600 text-center">El chatbot de modas mas chic y canchero</p>
                     </div>
                     <p className="text-slate-600 xl:text-xl dark:text-slate-300 text-center text-balanced">A <span className='text-gradient-p-to-a font-bold text-xl xl:text-2xl'>Carayan IA</span> le podes preguntar lo que quieras, desde que outfit ponerte hoy hasta si es buena idea ir a la casa de tu ex luego de unas copas para hacer el fiki fiki...No mentira, porque el que bebe no conduce.</p>
                 </div>

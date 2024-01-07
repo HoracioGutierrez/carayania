@@ -20,7 +20,7 @@ export default async function page({ params: { id: slug } }: Props) {
 
 
     return (
-        <main className='p-2 grow flex flex-col  pb-[130px] container'>
+        <main className='grow flex flex-col'>
             <ChatTitle title={payload?.title as string} chatSlug={slug} />
             <ChatMessagesList chatSlug={slug} payload={payload?.message} userImageURL={session?.user.image as string} />
             <ChatForm chatSlug={slug} expired={session?.user.currentPlan?.expired as boolean}>

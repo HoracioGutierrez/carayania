@@ -31,7 +31,7 @@ export default function ChatForm({ children, chatSlug, expired }: Props) {
     }
 
     return (
-        <form className='w-full fixed bottom-0 left-0' onSubmit={onSubmit}>
+        <form className='w-full relative' onSubmit={onSubmit}>
             {children}
             <SendChatIcon chatSlug={chatSlug} isLoading={isLoading} stop={stop} expired={expired} />
         </form>
